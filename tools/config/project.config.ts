@@ -11,6 +11,23 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
+  PUBLISH_TASK_CONFIG: any = {
+    prod: {
+      awsProfile: 'smdev15',  //Can use AWS_PROFILE env var instead (AWS_PROFILE=smdev15 gulp awspublish)
+      patternsToGzip: ['**/*.js', '**/*.css', '**/*.html'],
+      patternsToOmit: [], //By default won't omit anything (will upload entire dist/prod dir
+      s3: {        //@see http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
+        params: {
+          Bucket: 'angular-serverless-seed'
+        }
+      },
+      headers: {},  //Headers to add to all objects
+      cf: {        //@see https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish
+        distribution: 'E2CHM3LU411P5L'
+      }
+    },
+  };
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
