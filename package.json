@@ -1,10 +1,10 @@
 {
-  "name": "angular-seed",
+  "name": "angular-serverless-seed",
   "version": "1.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "description": "Modular starter project for Angular with statically typed build and AoT compilation",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/smdev15/angular-serverless-s3"
   },
   "scripts": {
     "build.tools": "tsc && gulp build.tools --color",
@@ -48,8 +48,6 @@
     "compodoc": "./node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "./node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
-  "license": "MIT",
   "engines": {
     "node": ">=6.9.0",
     "npm": ">=3.10.3"

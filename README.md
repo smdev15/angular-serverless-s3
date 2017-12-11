@@ -1,6 +1,6 @@
 # Introduction
 
-`angular-seed` provides the following features:
+`angular-serverless-s3` provides the following features:
 
 - Allows you to painlessly update the seed tasks of already existing project.
 - Supports multiple Angular applications with shared codebase in a single instance of the seed.
@@ -28,8 +28,7 @@ In order to start the seed use:
 
 
 ```bash
-$ git clone --depth 1 https://github.com/mgechev/angular-seed.git
-$ cd angular-seed
+$ cd angular-serverless-s3
 
 # install the project's dependencies
 $ npm install
