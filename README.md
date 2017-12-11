@@ -181,16 +181,12 @@ $ npm run sme.prod.aot -- --sme-out-format json # or html / tsv
 - [Configuration](#configuration)
 - [Environment Configuration](#environment-configuration)
 - [Tools documentation](#tools-documentation)
-- [How to extend?](#how-to-extend)
+- [Deploy to AWS S3 and Run Serverless](#run-serverless-on-aws)
 - [Running tests](#running-tests)
 - [Contributing](#contributing)
 - [Advanced Seed Option](#advanced-seed-option)
 - [Examples](#examples)
 - [Directory Structure](#directory-structure)
-- [Contributors](#contributors)
-  - [Wiki Contributors](#wiki-contributors)
-- [Change Log](#change-log)
-- [License](#license)
 
 # Configuration
 
@@ -224,15 +220,18 @@ Currently the `ENV_NAME`s are `dev`, `prod`, `staging`, but you can simply add a
 
 A documentation of the provided tools can be found in [tools/README.md](tools/README.md).
 
-# How to extend?
+# Deploy to AWS S3 and Run Serverless
 
-Visit the [Wiki page](https://github.com/mgechev/angular-seed/wiki) of the project.
+*  Build your Angular app via normal angular-seed process (ex: `npm run build.prod.rollup.aot`). Then run your publish task. Ex: `npm run awspublish`
 
-# How to update?
-```
-git remote add upstream https://github.com/mgechev/angular-seed
-git pull upstream master
-```
+*  `--awspublish-stage` dictates which stage index of `PUBLISH_TASK_CONFIG` to use.
+*  By default all assets in `dist/prod` will be uploaded to s3 with `public-read` permissions.
+*  **awsProfile**: The AWS SDK profile to use when uploading to S3 and invalidating CF objects.  See [the AWS SDK config guide](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html)
+*  **patternsToGzip**: `gulp.src` patterns to gzip, relative to the angular-seed `dist/prod` dir. Default: `['**/*.js', '**/*.css', '**/*.html']`
+*  **patternsToOmit**: `gulp.src` patterns to not upload to s3, relative to the angular-seed `dist/prod` dir. By default `dist/prod/**/*` will be uploaded (after gzip).
+*  **s3**: The AWSConfig object used to create an aws-sdk S3 client. At a minimum you must specify `bucket`, to define the site bucket. You can find all available options in the []AWS SDK documentation](//@see http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property)
+*  **headers**:  Headers to add to all objects in S3. By default you will get `'Cache-Control': 'max-age=315360000, no-transform, public'`
+*  **cf**: CloudFront distro id must be defined in `cf.distribution`. This will create CF invalidations for all uploaded resources. See [gulp-cloudfront-invalidate-aws-publish](https://github.com/lpender/gulp-cloudfront-invalidate-aws-publish)
 
 # Running tests
 
