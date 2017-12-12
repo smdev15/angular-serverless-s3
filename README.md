@@ -1,3 +1,5 @@
+# Angular seed project with AOT build and serverless hosting on AWS 
+
 # Introduction
 
 `angular-serverless-s3` provides the following features:
@@ -9,6 +11,7 @@
 - Production and development builds.
 - **Ahead-of-Time** compilation support.
 - **Tree-Shaking** production builds with Rollup.
+- Painlessly push production build to Amazon S3 and deploy as a serverless web application.
 - Uses codelyzer for static code analysis, which verifies that the project follows practices from the Angular style guide.
 - Sample unit tests with Jasmine and Karma including code coverage via [istanbul](https://gotwarlost.github.io/istanbul/).
 - End-to-end tests with Protractor.
